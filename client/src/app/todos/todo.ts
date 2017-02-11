@@ -1,4 +1,4 @@
-export interface User {
+export interface Todo {
     id: string,
     owner: string,
     status: boolean,

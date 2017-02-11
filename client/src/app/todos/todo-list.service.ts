@@ -4,11 +4,11 @@ import { Todo } from './todo';
 import {Observable} from "rxjs";
 
 @Injectable()
-export class UserListService {
+export class TodoListService {
     private baseUrl: string = API_URL;
     constructor(private http:Http) { }
 
-    getUsers(): Observable<Todo[]> {
+    getTodos(): Observable<Todo[]> {
         let body = this.http.request(this.baseUrl + 'todos').map(res => res.json());
         return body;
     }

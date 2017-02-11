@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserListService } from "./user-list.service";
+import { TodoListService } from "./todo-list.service";
 import { FormsModule } from '@angular/forms';
 import { FilterBy } from "./filter.pipe";
 
@@ -10,10 +10,10 @@ import { FilterBy } from "./filter.pipe";
 })
 
 export class TodoListComponent {
-    private users: any;
+    private todos: any;
 
-    constructor(private _todoListService: UserListService) {
-        this.users = _todoListService.getUsers();
+    constructor(private _todoListService: TodoListService) {
+        this.todos = _todoListService.getTodos();
     }
 }
 
