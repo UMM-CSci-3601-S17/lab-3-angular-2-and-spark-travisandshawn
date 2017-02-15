@@ -1,17 +1,16 @@
 <ul class="list-group">
     <li class="list-group-item list-group-item-info">
-        <input #input type="text" placeholder="Owner" [(ngModel)]="search">
-        <input #input type="text" placeholder="Category" [(ngModel)]="search1">
-        <input #input type="text" placeholder="Body" [(ngModel)]="search2">
-        Select status:
-        <select  [(ngModel)]="search3">
-            <option value= ""  ></option>
+        <input #input type="text" placeholder="Owner" (input)="search = $event.target.value">
+        <input #input type="text" placeholder="Category" (input)="search1 = $event.target.value">
+        <input #input type="text" placeholder="Body" (input)="search2 = $event.target.value">
+        <select  (input)="search3 = $event.target.value">
+            <option value= ""  >Choose status</option>
             <option value = "1">Complete</option>
             <option value = "0">Incomplete</option>
         </select>
 
     </li>
-    <li class="list-group-item list-group-item-info">Todo Owner</li>
+    <li class="list-group-item list-group-item-info">Todo</li>
     <li *ngFor="let todo of todos | async | filterBy: {owner: search} | filterBy: {category: search1 }| filterBy: {body: search2 } | filterBy: {status: search3 }" class="list-group-item">
         <u>Owner</u>:  {{ todo.owner }}<br>
         <u>Status</u>: {{ todo.status }}<br>
