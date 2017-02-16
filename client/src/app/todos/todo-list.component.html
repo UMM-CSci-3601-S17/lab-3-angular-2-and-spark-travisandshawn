@@ -1,9 +1,42 @@
 <ul class="list-group">
     <li class="list-group-item list-group-item-info">
-        <input #input type="text" placeholder="Filter" [(ngModel)]="search">
+        <input #input type="text" placeholder="ID Filter" [(ngModel)]="searchID">
+        ID
+
+        <br><br>
+
+        <input #input type="text" placeholder="Owner Filter" [(ngModel)]="searchOWNER">
+        Owner
+
+        <br><br>
+
+        <select [(ngModel)]="searchSTATUS">
+            <option value = "" ></option>
+            <option value = "1">Complete</option>
+            <option value = "0">Incomplete</option>
+        </select>
+        Status
+
+        <br><br>
+
+        <input #input type="text" placeholder="Body Filter" [(ngModel)]="searchBODY">
+        Body
+
+        <br><br>
+
+        <input #input type="text" placeholder="Category Filter" [(ngModel)]="searchCATEGORY">
+        Category
     </li>
-    <li class="list-group-item list-group-item-info">Todo Owner</li>
-    <li *ngFor="let todo of todos | async | filterBy: {owner: search}" class="list-group-item">
-        {{ todo.owner }}
+    <li *ngFor="let todo of todos | async | filterBy: {_id: searchID}
+                                          | filterBy: {owner: searchOWNER}
+                                          | filterBy: {status: searchSTATUS}
+                                          | filterBy: {body: searchBODY}
+                                          | filterBy: {category: searchCATEGORY}"
+        class="list-group-item">
+        <u>ID</u>: {{ todo._id }}<br>
+        <u>Owner</u>:  {{ todo.owner }}<br>
+        <u>Status</u>: {{ todo.status }}<br>
+        <u>Body</u>: {{ todo.body }}<br>
+        <u>Category</u>: {{ todo.category }}<br>
     </li>
 </ul>
