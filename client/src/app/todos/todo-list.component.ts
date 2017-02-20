@@ -1,20 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TodoListService } from "./todo-list.service";
-import { FormsModule } from '@angular/forms';
+import { Todo } from "./todo";
 import { FilterBy } from "./filter.pipe";
 
 @Component({
     selector: 'todo-list-component',
-    providers: [TodoListService],
     templateUrl: 'todo-list.component.html',
+    providers: [ FilterBy ]
 })
 
-export class TodoListComponent {
-    public todos: any;
+export class TodoListComponent implements OnInit {
+    public todos: Todo[];
 
-    constructor(private _todoListService: TodoListService) {
-        this.todos = _todoListService.getTodos();
+    constructor(private todoListService: TodoListService) {
+        // this.todos = this.todoListService.getTodos();
+    }
+
+    ngOnInit(): void {
+        this.todoListService.getTodos().subscribe(
+            todos => this.todos = todos,
+            err => {
+                console.log(err);
+            }
+        );
     }
 }
-
-
