@@ -63,20 +63,20 @@ describe("Todo list", () => {
         expect(todoList.todos.length).toBe(3);
     });
 
-    it("contains a todo named 'Barry'", () => {
-        expect(todoList.todos.some((todo: Todo) => todo.owner === "Barry" )).toBe(true);
+    it("contains a todo with owner 'Blanche'", () => {
+        expect(todoList.todos.some((todo: Todo) => todo.owner === "Blanche" )).toBe(true);
     });
 
-    it("contain a todo named 'Fry'", () => {
+    it("contain a todo with owner 'Fry'", () => {
         expect(todoList.todos.some((todo: Todo) => todo.owner === "Fry" )).toBe(true);
     });
 
-    it("doesn't contain a todo named 'Santa'", () => {
+    it("doesn't contain a todo with owner 'Santa'", () => {
         expect(todoList.todos.some((todo: Todo) => todo.owner === "Santa" )).toBe(false);
     });
 
-    it("has two todos that are 37 years old", () => {
-        expect(todoList.todos.filter((todo: Todo) => todo.status === true).length).toBe(143);
+    it("has 2 todos that has a 'complete' status", () => {
+        expect(todoList.todos.filter((todo: Todo) => todo.status === true).length).toBe(2);
     });
 
 });
