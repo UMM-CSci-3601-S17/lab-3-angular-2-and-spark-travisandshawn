@@ -13,6 +13,7 @@ import { routing } from './app/app.routes';
 import { FormsModule } from '@angular/forms';
 
 import { PipeModule } from './pipe.module';
+import {TodoListService} from "./app/todos/todo-list.service";
 
 @NgModule({
     imports: [
@@ -31,8 +32,9 @@ import { PipeModule } from './pipe.module';
         UserListComponent,
         TodoListComponent
     ],
-    providers: [ UserListService ],
+    providers: [ UserListService, TodoListService],
     bootstrap: [ AppComponent ]
+
 })
 
 export class AppModule {}
